@@ -1,20 +1,22 @@
+import React from 'react';
+
+import { Provider } from 'react-redux';
+
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+import { GluestackUIProvider } from '@gluestack-ui/themed';
+
+import { config } from '@/config/theme/gluestack-ui.config';
+import { AppNavigationManager } from '@/navigation/AppNavigationManager';
+import { store } from '@/state/store';
+
+export default function App(): React.JSX.Element {
+	return (
+		<Provider store={store}>
+			<GluestackUIProvider config={config}>
+				<AppNavigationManager />
+				<StatusBar style="auto" />
+			</GluestackUIProvider>
+		</Provider>
+	);
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
