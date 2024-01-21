@@ -23,7 +23,13 @@ export const AppNavigationManager = (): React.JSX.Element | null => {
 		return null;
 	}
 	return (
-		<View onLayout={onLayoutRootView}>
+		<View
+			onLayout={onLayoutRootView}
+			style={{
+				flex: 1,
+				width: '100%'
+			}}
+		>
 			{!onboardingCompleted ? <OnboardingScreen /> : <NavigationApp />}
 		</View>
 	);
